@@ -42,25 +42,24 @@ def search_users(args: dict) -> list:
         user_age: int = user["age"]
         user_occupation: str = user["occupation"]
 
-        print(id, user_id)
-        print(name, user_name)
-        print(age, user_age)
-        print(occupation, user_occupation)
-
-        if (id is not None and id == user_id) \
-            or (name is not None and name.casefold() in user_name.casefold()) \
-            or (age is not None and age in range(user_age - 1, user_age + 2)) \
-            or (occupation is not None and occupation.casefold() in user_occupation.casefold()) \
-        :
+        if (
+            (id is not None and id == user_id)
+            or (name is not None and name.casefold() in user_name.casefold())
+            or (age is not None and age in range(user_age - 1, user_age + 2))
+            or (
+                occupation is not None
+                and occupation.casefold() in user_occupation.casefold()
+            )
+        ):
             matching_users.append(user)
 
     return matching_users
 
 
-def try_int(num: str|None):
+def try_int(num: str | None) -> int | None:
     if num is not None:
         try:
             num = int(num)
         except ValueError:
             num = None
-        return num
+    return num
