@@ -8,7 +8,7 @@ bp = Blueprint("match", __name__, url_prefix="/match")
 
 
 @bp.route("<int:match_id>")
-def match(match_id):
+def match(match_id: int) -> tuple[dict|str, int]:
     if match_id < 0 or match_id >= len(MATCHES):
         return "Invalid match id", 404
 
@@ -19,9 +19,5 @@ def match(match_id):
     return {"message": msg, "elapsedTime": end - start}, 200
 
 
-def is_match(fave_numbers_1, fave_numbers_2):
-    for number in fave_numbers_2:
-        if number not in fave_numbers_1:
-            return False
-
-    return True
+def is_match(fave_numbers_1: list, fave_numbers_2: list) -> bool:
+    return set(fave_numbers_2).issubset(set(fave_numbers_1))
