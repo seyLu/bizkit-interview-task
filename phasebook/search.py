@@ -2,16 +2,15 @@ from flask import Blueprint, request
 
 from .data.search_data import USERS
 
-
 bp = Blueprint("search", __name__, url_prefix="/search")
 
 
 @bp.route("")
-def search():
+def search() -> tuple[dict | str | list, int]:
     return search_users(request.args.to_dict()), 200
 
 
-def search_users(args):
+def search_users(args: dict) -> list:
     """Search users database
 
     Parameters:
