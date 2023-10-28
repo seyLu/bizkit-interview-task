@@ -1,4 +1,5 @@
 import time
+from typing import Any
 
 from flask import Blueprint
 
@@ -8,7 +9,7 @@ bp = Blueprint("match", __name__, url_prefix="/match")
 
 
 @bp.route("<int:match_id>")
-def match(match_id: int) -> tuple[dict | str, int]:
+def match(match_id: int) -> tuple[dict[str, Any] | str, int]:
     if match_id < 0 or match_id >= len(MATCHES):
         return "Invalid match id", 404
 
@@ -19,5 +20,5 @@ def match(match_id: int) -> tuple[dict | str, int]:
     return {"message": msg, "elapsedTime": end - start}, 200
 
 
-def is_match(fave_numbers_1: list, fave_numbers_2: list) -> bool:
+def is_match(fave_numbers_1: list[int], fave_numbers_2: list[int]) -> bool:
     return frozenset(fave_numbers_2).issubset(frozenset(fave_numbers_1))

@@ -3,11 +3,11 @@ from flask import Flask
 from . import match, search
 
 
-def create_app():
+def create_app() -> Flask:
     app = Flask(__name__)
 
     @app.route("/")
-    def hello():
+    def hello() -> str:
         return "Hello World!"
 
     app.register_blueprint(match.bp)

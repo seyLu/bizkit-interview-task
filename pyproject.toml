@@ -1,0 +1,49 @@
+[project]
+name = "bizkit-interview-task"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+  { name = "MJ Sabit (seyLu)", email = "98249191+seyLu@users.noreply.github.com" },
+]
+description = "Template Repository for quickly starting a Python project."
+readme = "README.md"
+dynamic = ["version"]
+keywords = ["bizkit-interview", "python-interview"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/seyLu/bizkit-interview-task#readme"
+"Homepage" = "https://github.com/seyLu/bizkit-interview-task"
+"Bug Tracker" = "https://github.com/seyLu/bizkit-interview-task/issues"
+
+
+[tool.ruff]
+select = [
+  "A",   # flake8-builtins
+  "B",   # flake8-bugbear
+  "S",   # flake8-bandit
+  "E",   # Pyflakes
+  "F",   # Pycodestyle
+  "I",   # Isort
+  "PL",  # Pylint
+  "RUF", # Ruff-specific rules
+]
+ignore = ["E501"]
+
+
+[tool.mypy]
+strict = "True"
+implicit_reexport = "True"
+check_untyped_defs = true
+ignore_missing_imports = true
+
+# Exclude type checking on files/dirs
+exclude = [
+  # TOML basic string (double-quotes, backslash and other characters need escaping)
+  # TOML literal string (single-quotes, no escaping necessary)
+]
